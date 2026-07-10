@@ -1,0 +1,209 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  font-size: 2.5rem;
+}
+
+/* 3D Card Style */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 
+    0 10px 20px rgba(0,0,0,0.2),
+    0 6px 6px rgba(0,0,0,0.1);
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.card:hover {
+  transform: perspective(1000px) rotateX(1deg) rotateY(-1deg) translateY(-5px);
+  box-shadow: 
+    0 15px 30px rgba(0,0,0,0.25),
+    0 10px 10px rgba(0,0,0,0.15);
+}
+
+.form-group, .subject-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: #f9f9f9;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #667eea;
+  background: white;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* 3D Button Style */
+.btn-3d {
+  background: linear-gradient(145deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 
+    0 4px 0 #5a67d8,
+    0 6px 6px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  transform: translateY(0);
+}
+
+.btn-3d:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 0 #5a67d8,
+    0 8px 8px rgba(0,0,0,0.15);
+}
+
+.btn-3d:active {
+  transform: translateY(2px);
+  box-shadow: 
+    0 2px 0 #5a67d8,
+    0 3px 3px rgba(0,0,0,0.1);
+}
+
+.hidden {
+  display: none;
+}
+
+.marksheet {
+  margin-top: 40px;
+  border-top: 3px solid #667eea;
+  padding-top: 30px;
+}
+
+.marksheet-content {
+  margin-bottom: 25px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background: linear-gradient(145deg, #667eea, #764ba2);
+  color: white;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f3ff;
+  transform: scale(1.01);
+  transition: transform 0.2s ease;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+#downloadPdfBtn {
+  background: linear-gradient(145deg, #28a745, #20c997);
+  box-shadow: 0 4px 0 #1e7e34;
+}
+
+#downloadPdfBtn:hover {
+  box-shadow: 0 6px 0 #1e7e34;
+}
+
+#downloadTextBtn {
+  background: linear-gradient(145deg, #6c757d, #495057);
+  box-shadow: 0 4px 0 #495057;
+}
+
+#downloadTextBtn:hover {
+  box-shadow: 0 6px 0 #495057;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+  .container {
+    max-width: 100%;
+    box-shadow: none;
+  }
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  .btn-3d, .actions {
+    display: none;
+  }
+  body * {
+    visibility: hidden;
+  }
+  #marksheet, #marksheet * {
+    visibility: visible;
+  }
+  #marksheet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
