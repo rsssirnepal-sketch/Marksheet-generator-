@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marksheet Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Marksheet Generator</h1>
+
+    <!-- Input form -->
+    <form id="marksForm">
+      <div class="form-group">
+        <label for="studentName">Student Name</label>
+        <input type="text" id="studentName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="rollNo">Roll Number</label>
+        <input type="text" id="rollNo" required>
+      </div>
+
+      <div class="form-group">
+        <label for="className">Class</label>
+        <input type="text" id="className" required>
+      </div>
+
+      <h3>Subject Marks</h3>
+
+      <div class="subject-group">
+        <label for="math">Math</label>
+        <input type="number" id="math" min="0" max="100" required>
+      </div>
+
+      <div class="subject-group">
+        <label for="science">Science</label>
+        <input type="number" id="science" min="0" max="100" required>
+      </div>
+
+      <div class="subject-group">
+        <label for="english">English</label>
+        <input type="number" id="english" min="0" max="100" required>
+      </div>
+
+      <div class="subject-group">
+        <label for="social">Social Studies</label>
+        <input type="number" id="social" min="0" max="100" required>
+      </div>
+
+      <button type="submit">Generate Marksheet</button>
+    </form>
+
+    <!-- Marksheet display area -->
+    <div id="marksheet" class="marksheet hidden">
+      <h2>Marksheet</h2>
+      <div class="marksheet-content">
+        <p><strong>Student Name:</strong> <span id="displayName"></span></p>
+        <p><strong>Roll No:</strong> <span id="displayRollNo"></span></p>
+        <p><strong>Class:</strong> <span id="displayClass"></span></p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Marks</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+          <tbody id="marksTableBody">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+
+        <p><strong>Total Marks:</strong> <span id="totalMarks"></span></p>
+        <p><strong>Average:</strong> <span id="averageMarks"></span></p>
+        <p><strong>Overall Grade:</strong> <span id="grade"></span></p>
+      </div>
+
+      <div class="actions">
+        <button id="printBtn">Print</button>
+        <button id="downloadPdfBtn">Download PDF</button>
+        <button id="downloadTextBtn">Download as Text</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- External libraries for PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
